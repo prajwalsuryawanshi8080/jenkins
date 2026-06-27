@@ -23,8 +23,8 @@ pipeline {
                 -Dsonar.token=sqp_60dedfab8b4738744f9aa18504e3a786032b2897'''
             }
         }
-
-       
+  
+              
 
         // stage ('Test') {
         //     steps {
@@ -37,7 +37,7 @@ pipeline {
         stage ('Quality-Gate') {
             steps {
                 timeout(10) {
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-cred'
+                        waitForQualityGate abortPipeline: true, credentialsId: 'sonar-cred'
                     }
                 
             }
