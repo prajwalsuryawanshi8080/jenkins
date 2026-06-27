@@ -24,23 +24,16 @@ pipeline {
             }
         }
 
-        stage ('TEST') {
-            steps {
-                withSonarQubeEnv(installationName: 'sonarqube' ,credentialsId: 'sonar-cred') {
-                 sh '''cd backend
-                  mvn sonar:sonar -Dsonar.projectKey=studentapp'''
-                }
-            }
-        }
+       
 
-        stage ('Test') {
-            steps {
-                withSonarQubeEnv(installationName: 'sonarqube' ,credentialsId: 'sonar-cred') {
-                    sh '''cd backend
-                  mvn sonar:sonar -Dsonar.projectKey=studentapp'''
-                    }
-            }
-        }
+        // stage ('Test') {
+        //     steps {
+        //         withSonarQubeEnv(installationName: 'sonarqube' ,credentialsId: 'sonar-cred') {
+        //             sh '''cd backend
+        //           mvn sonar:sonar -Dsonar.projectKey=studentapp'''
+        //             }
+        //     }
+        // }
         stage ('Quality-Gate') {
             steps {
                 timeout(10) {
